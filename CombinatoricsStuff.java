@@ -198,7 +198,7 @@ public class CombinatoricsStuff {
 	}
 	
 	public static int choose (int n, int k) {
-		if (k > n) //how did we get here
+		if (k > n)
 			return 0;
 		int answer = 1;
 		k = Math.min(k, n-k);
