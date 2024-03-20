@@ -182,7 +182,9 @@ public class CombinatoricsStuff {
 	
 	//insert my random code to output things here
 	public static void main (String[]args) {
-
+		int[] permutation = new int[]{3,5,2,1,4};
+		System.out.println("Lex successor: " + Arrays.toString(generateNextLex(permutation)));
+		System.out.println("JT successor: " + Arrays.toString(generateJT(5, calcJTRank(permutation)+1)));
 	}
 	
 	
