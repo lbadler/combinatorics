@@ -165,6 +165,18 @@ public class CombinatoricsStuff {
 		return rank;
 	}
 	
+	public static int[] generateColex (int size, int rank) {
+		int[] subset = new int[size];
+		for (int i = size; i > 0; i--)
+			for (int j = i; true; j++)
+				if (choose(j,i) > rank) {
+					subset[i-1] = j;
+					rank -= choose(j-1, i);
+					break;
+				}
+		return subset;
+	}
+	
 	//successor function for subsets in colex order. Never wraps, just increases the size of the set from which the subset is from
 	public static int[] generateNextColex (int[] subset) {
 		int size = subset.length;
@@ -182,8 +194,9 @@ public class CombinatoricsStuff {
 	
 	//insert my random code to output things here
 	public static void main (String[]args) {
-		int[] permutation = new int[]{3,5,7,2,1,4,6};
-		System.out.println(Arrays.toString(permutationToInversion(permutation)));
+		int testRank = 1;
+		int testSize = 6;
+		System.out.println(Arrays.toString(generateColex(testSize, testRank)));
 	}
 	
 	
