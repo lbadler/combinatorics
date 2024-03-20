@@ -182,8 +182,7 @@ public class CombinatoricsStuff {
 	
 	//insert my random code to output things here
 	public static void main (String[]args) {
-		for (int i = 0; i < 14; i++)
-			System.out.println(i + "! = " + factorial(i));
+
 	}
 	
 	
