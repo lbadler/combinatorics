@@ -205,9 +205,8 @@ public class CombinatoricsStuff {
 	public static int[] generateConjugatePartition (int[] partition) {
 		int[] conjugate = new int[partition[0]];
 		for (int i = 0; i < conjugate.length; i++)
-			for (int j = 0; j < partition.length; j++)
-				if (partition[j] > i)
-					conjugate[i]++;
+			for (int j = 0; j < partition.length && partition[j] > i; j++)
+				conjugate[i]++;
 		return conjugate;
 	}
 	
@@ -222,7 +221,7 @@ public class CombinatoricsStuff {
 	
 	//Insert my random code to test/output things here
 	public static void main (String[]args) {
-		int[] demoPartition = new int[]{4,4,1,1};
+		int[] demoPartition = new int[]{3, 1};
 		int[] demoConjugate = generateConjugatePartition(demoPartition);
 		int[] demoAltConjugate = altConjugatePartition(demoPartition);
 		System.out.println(Arrays.toString(demoPartition));
