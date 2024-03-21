@@ -12,7 +12,7 @@ import java.util.*;
 public class CombinatoricsStuff {
 	//Permutation algorithms
 	
-	//rank algorithm for johnson-trotter
+	//Rank algorithm for johnson-trotter
 	public static int calcJTRank(int[] perm) {
 		int size = perm.length;
 		if (size == 1)
@@ -38,7 +38,7 @@ public class CombinatoricsStuff {
 		}
 	}
 	
-	//unrank for johnson-trotter
+	//Unrank for johnson-trotter
 	public static int[] generateJT (int size, int rank) {
 		if (size == 1) {
 			return new int[]{1};
@@ -58,7 +58,7 @@ public class CombinatoricsStuff {
 		return toReturn;
 	}
 	
-	//rank algorithm for lexicological order
+	//Rank algorithm for lexicological order
 	public static int calcLexRank(int[] perm) {
 		int rank = 0;
 		int size = perm.length;
@@ -69,7 +69,7 @@ public class CombinatoricsStuff {
 		return rank;
 	}
 	
-	//unrank algorithm for lex order
+	//Unrank algorithm for lex order
 	public static int[] generateLex (int size, int rank) {
 		int[] perm = new int[size];
 		ArrayList<Integer> unused = new ArrayList<Integer>(size);
@@ -99,7 +99,7 @@ public class CombinatoricsStuff {
 		return perm;
 	}
 	
-	//successor function for lex order. if given the final permutation, returns the first
+	//Successor function for lex order. if given the final permutation, returns the first
 	public static int[] generateNextLex (int[] prev) {
 		int size = prev.length;
 		int i = size - 2;
@@ -128,7 +128,7 @@ public class CombinatoricsStuff {
 		return next;
 	}
 	
-	//takes an inversion sequence, and returns the associated permutation
+	//Takes an inversion sequence, and returns the associated permutation
 	public static int[] inversionToPermutation (int[] inversion) {
 		inversion = inversion.clone();
 		int size = inversion.length;
@@ -145,7 +145,7 @@ public class CombinatoricsStuff {
 		return perm;
 	}
 	
-	//calculates the inversion sequence for a permutation
+	//Calculates the inversion sequence for a permutation
 	public static int[] permutationToInversion (int[] perm) {
 		int size = perm.length;
 		int[] inversion = new int[size];
@@ -161,7 +161,7 @@ public class CombinatoricsStuff {
 	
 	//Subset algorithms
 	
-	//calculates the rank of a subset in Colex order
+	//Calculates the rank of a subset in Colex order
 	public static int calcColexRank (int[] subset) {
 		int rank = 0;
 		int size = subset.length;
@@ -170,6 +170,7 @@ public class CombinatoricsStuff {
 		return rank;
 	}
 	
+	//Unrank subset in colex order
 	public static int[] generateColex (int size, int rank) {
 		int[] subset = new int[size];
 		for (int i = size; i > 0; i--)
@@ -182,7 +183,7 @@ public class CombinatoricsStuff {
 		return subset;
 	}
 	
-	//successor function for subsets in colex order. Never wraps, just increases the size of the set from which the subset is from
+	//Successor function for subsets in colex order. Never wraps, just increases the size of the set from which the subset is from
 	public static int[] generateNextColex (int[] subset) {
 		int size = subset.length;
 		int[] next = new int[size];
@@ -198,10 +199,10 @@ public class CombinatoricsStuff {
 	}
 	
 	
-	//integer partitions
+	//Integer partitions
 	
 	
-	//insert my random code to output things here
+	//Insert my random code to test/output things here
 	public static void main (String[]args) {
 		
 	}
@@ -216,6 +217,7 @@ public class CombinatoricsStuff {
 		return prod;
 	}
 	
+	//N choose K
 	public static int choose (int n, int k) {
 		if (k > n)
 			return 0;
