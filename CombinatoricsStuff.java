@@ -210,7 +210,7 @@ public class CombinatoricsStuff {
 		return conjugate;
 	}
 	
-	//A clever alternative algorithm to find conjugate partitions
+	//A clever alternative algorithm to find conjugate partitions (these are the same algorithm effectively, I just had some code tricks I wanted to use here)
 	public static int[] altConjugatePartition (int[] partition) {
 		int[] conjugate = new int[partition[0]];
 		for (int i = 0; i < partition.length; i++)
@@ -221,7 +221,7 @@ public class CombinatoricsStuff {
 	
 	//Insert my random code to test/output things here
 	public static void main (String[]args) {
-		int[] demoPartition = new int[]{3, 1};
+		int[] demoPartition = new int[]{7, 5, 5, 3, 1};
 		int[] demoConjugate = generateConjugatePartition(demoPartition);
 		int[] demoAltConjugate = altConjugatePartition(demoPartition);
 		System.out.println(Arrays.toString(demoPartition));
