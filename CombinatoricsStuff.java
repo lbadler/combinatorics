@@ -10,6 +10,8 @@ import java.util.*;
 
 
 public class CombinatoricsStuff {
+	//Permutation algorithms
+	
 	//rank algorithm for johnson-trotter
 	public static int calcJTRank(int[] perm) {
 		int size = perm.length;
@@ -156,6 +158,9 @@ public class CombinatoricsStuff {
 		return inversion;
 	}
 	
+	
+	//Subset algorithms
+	
 	//calculates the rank of a subset in Colex order
 	public static int calcColexRank (int[] subset) {
 		int rank = 0;
@@ -192,11 +197,13 @@ public class CombinatoricsStuff {
 		return next;
 	}
 	
+	
+	//integer partitions
+	
+	
 	//insert my random code to output things here
 	public static void main (String[]args) {
-		int testRank = 1;
-		int testSize = 6;
-		System.out.println(Arrays.toString(generateColex(testSize, testRank)));
+		
 	}
 	
 	
