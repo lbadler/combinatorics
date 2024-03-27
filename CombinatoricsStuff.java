@@ -217,16 +217,45 @@ public class CombinatoricsStuff {
 			Arrays.fill(conjugate, 0, partition[i], i+1);
 		return conjugate;
 	}
-	
+
+	public static int rankRG (int[] RG) {
+		int length = RG.length;
+		int[] max = new int[length];
+		max[0] = 1;
+		for (int i = 1; i < length; i++) {
+			if (max[i - 1] > RG[i - 1]) {
+				max[i] = max[i - 1];
+			} else {
+				max[i] = RG[i - 1];
+			}
+		}
+		int rank = 0;
+		for (int i = 0; i < length; i++) {
+			rank += d(length - i - 1, max[i]) * (RG[i] - 1);
+		}
+		return rank;
+	}
+
+	public static int d (int m, int t) {
+		if (m == 1) {
+			return t + 1;
+		} else if (m == 0) {
+			return 1;
+		} else {
+			return t * d(m-1, t) + d(m-1, t+1);
+		}
+	}
 	
 	//Insert my random code to test/output things here
 	public static void main (String[]args) {
-		int[] demoPartition = new int[]{7, 5, 5, 3, 1};
+		/*int[] demoPartition = new int[]{7, 5, 5, 3, 1};
 		int[] demoConjugate = generateConjugatePartition(demoPartition);
 		int[] demoAltConjugate = altConjugatePartition(demoPartition);
 		System.out.println(Arrays.toString(demoPartition));
 		System.out.println(Arrays.toString(demoConjugate));
-		System.out.println(Arrays.toString(demoAltConjugate));
+		System.out.println(Arrays.toString(demoAltConjugate));*/
+		int[] demoRG = new int[]{1, 2, 3, 1, 1, 4, 2};
+		System.out.println(rankRG(demoRG));
 	}
 	
 	
