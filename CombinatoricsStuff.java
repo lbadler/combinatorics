@@ -246,8 +246,33 @@ public class CombinatoricsStuff {
 		}
 	}
 	
+	//This can be done without just calling the successor repeatedly
+	public static int[] unrankRG (int size, int rank) {
+		int[] rglist = new int[size];
+		Arrays.fill(rglist, 1);
+		for (int i = 0; i < rank; i++)
+			rglist = nextRG(rglist);
+		return rglist;
+	}
+	
+	public static int[] nextRG (int[] rglist) {
+		rglist = rglist.clone();
+		for (int i = rglist.length-1; i >= 0; i--)
+		{
+			int index = indexOf(rglist, rglist[i]);
+			if (index < i && index >= 0) {
+				rglist[i]++;
+				for (int j = i+1; j < rglist.length; j++)
+					rglist[j] = 1;
+				break;
+			}
+		}
+		return rglist;
+	}
+	
 	//Insert my random code to test/output things here
 	public static void main (String[]args) {
+
 		/*int[] demoPartition = new int[]{7, 5, 5, 3, 1};
 		int[] demoConjugate = generateConjugatePartition(demoPartition);
 		int[] demoAltConjugate = altConjugatePartition(demoPartition);
@@ -256,6 +281,7 @@ public class CombinatoricsStuff {
 		System.out.println(Arrays.toString(demoAltConjugate));*/
 		int[] demoRG = new int[]{1, 2, 3, 1, 1, 4, 2};
 		System.out.println(rankRG(demoRG));
+		System.out.println(Arrays.toString(unrankRG(7, 518)));
 	}
 	
 	
@@ -278,5 +304,13 @@ public class CombinatoricsStuff {
 			answer *= (n-i);
 		answer /= factorial(k);
 		return answer;
+	}
+	
+	public static int indexOf (int[] list, int target) {
+		int index = -1;
+		for (int i = 0; index == -1 && i < list.length; i++)
+			if (list[i] == target)
+				index = i;
+		return index;
 	}
 }
