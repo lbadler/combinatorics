@@ -226,15 +226,9 @@ public class CombinatoricsStuff {
 		int length = RG.length;
 		int[] max = new int[length];
 		max[0] = 1;
-		for (int i = 1; i < length; i++) {
-			if (max[i - 1] > RG[i - 1]) {
-				max[i] = max[i - 1];
-			} else {
-				max[i] = RG[i - 1];
-			}
-		}
 		int rank = 0;
-		for (int i = 0; i < length; i++) {
+		for (int i = 1; i < length; i++) {
+            max[i] = Math.max(max[i - 1], RG[i - 1]);
 			rank += d(length - i - 1, max[i]) * (RG[i] - 1);
 		}
 		return rank;
