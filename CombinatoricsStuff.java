@@ -308,12 +308,11 @@ public class CombinatoricsStuff {
 			if (list[i] == target)
 				index = i;
 		return index;
+	}
 	
 	
 	public static int d (int m, int t) {
-		if (m == 1) {
-			return t + 1;
-		} else if (m == 0) {
+		if (m == 0) {
 			return 1;
 		} else {
 			return t * d(m-1, t) + d(m-1, t+1);
