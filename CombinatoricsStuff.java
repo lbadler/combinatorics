@@ -218,6 +218,10 @@ public class CombinatoricsStuff {
 		return conjugate;
 	}
 
+
+	//Restricted growth algorithms
+	
+	//Rank algorithm for RG list
 	public static int rankRG (int[] RG) {
 		int length = RG.length;
 		int[] max = new int[length];
@@ -235,17 +239,8 @@ public class CombinatoricsStuff {
 		}
 		return rank;
 	}
-
-	public static int d (int m, int t) {
-		if (m == 1) {
-			return t + 1;
-		} else if (m == 0) {
-			return 1;
-		} else {
-			return t * d(m-1, t) + d(m-1, t+1);
-		}
-	}
 	
+	//Unrank algorithm for RG list
 	//This can be done without just calling the successor repeatedly
 	public static int[] unrankRG (int size, int rank) {
 		int[] rglist = new int[size];
@@ -255,6 +250,7 @@ public class CombinatoricsStuff {
 		return rglist;
 	}
 	
+	//Successor function for RG list
 	public static int[] nextRG (int[] rglist) {
 		rglist = rglist.clone();
 		for (int i = rglist.length-1; i >= 0; i--)
@@ -312,5 +308,15 @@ public class CombinatoricsStuff {
 			if (list[i] == target)
 				index = i;
 		return index;
+	
+	
+	public static int d (int m, int t) {
+		if (m == 1) {
+			return t + 1;
+		} else if (m == 0) {
+			return 1;
+		} else {
+			return t * d(m-1, t) + d(m-1, t+1);
+		}
 	}
 }
