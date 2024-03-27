@@ -235,12 +235,23 @@ public class CombinatoricsStuff {
 	}
 	
 	//Unrank algorithm for RG list
-	//This can be done without just calling the successor repeatedly
 	public static int[] unrankRG (int size, int rank) {
 		int[] rglist = new int[size];
+		int[] helperList = new int[size];
 		Arrays.fill(rglist, 1);
-		for (int i = 0; i < rank; i++)
-			rglist = nextRG(rglist);
+		Arrays.fill(helperList, 1);
+		for (int i = 1; i < size; i++) {
+			int t = helperList[i-1];
+			if (t*d(size-i-1, t) <= rank) {
+				rglist[i] = t + 1;
+				rank -= t*d(size-i-1, t);
+				helperList[i] = rglist[i];
+			} else {
+				rglist[i] = rank / d(size-i-1, t) + 1;
+				rank %= d(size-i-1, t);
+				helperList[i] = t;
+			}
+		}
 		return rglist;
 	}
 	
@@ -262,15 +273,6 @@ public class CombinatoricsStuff {
 	
 	//Insert my random code to test/output things here
 	public static void main (String[]args) {
-
-		/*int[] demoPartition = new int[]{7, 5, 5, 3, 1};
-		int[] demoConjugate = generateConjugatePartition(demoPartition);
-		int[] demoAltConjugate = altConjugatePartition(demoPartition);
-		System.out.println(Arrays.toString(demoPartition));
-		System.out.println(Arrays.toString(demoConjugate));
-		System.out.println(Arrays.toString(demoAltConjugate));*/
-		int[] demoRG = new int[]{1, 2, 3, 1, 1, 4, 2};
-		System.out.println(rankRG(demoRG));
 		System.out.println(Arrays.toString(unrankRG(7, 518)));
 	}
 	
