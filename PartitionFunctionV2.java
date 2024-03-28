@@ -13,20 +13,17 @@ public class PartitionFunctionV2 {
 			return BigInteger.ONE;
 		if (max == 0)
 			return BigInteger.ZERO;
+		max = Math.min(n, max);
 		if (pnmvals[n][max] != null)
 			return pnmvals[n][max];
-		BigInteger sum = BigInteger.ZERO;
-		if (max > n)
-			sum = p(n, max-1);
-		else
-			sum = p(n, max-1).add(p(n-max, max));
+		BigInteger sum = p(n, max-1).add(p(n-max, max));
 		pnmvals[n][max] = sum;
 		return sum;
 	}
 	
 	public static void main(String[]args) {
 		LocalTime startTime = LocalTime.now();
-		int max = 10000;
+		int max = 25000;
 		pnmvals = new BigInteger[max+1][max+1];
 		for (int i = 0; i <= max; i++) {
 			System.out.println(i + ": " + p(i));
