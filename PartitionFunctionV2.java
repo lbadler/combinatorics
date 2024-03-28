@@ -16,8 +16,10 @@ public class PartitionFunctionV2 {
 		if (pnmvals[n][max] != null)
 			return pnmvals[n][max];
 		BigInteger sum = BigInteger.ZERO;
-		for (int j = 0; j*max <= n; j++)
-			sum = sum.add(p(n-j*max, max-1));
+		if (max > n)
+			sum = p(n, max-1);
+		else
+			sum = p(n, max-1).add(p(n-max, max));
 		pnmvals[n][max] = sum;
 		return sum;
 	}
