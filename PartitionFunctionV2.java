@@ -24,7 +24,7 @@ public class PartitionFunctionV2 {
 	
 	public static void main(String[]args) {
 		LocalTime startTime = LocalTime.now();
-		int max = 10000;
+		int max = Integer.parseInt(args[0]);
 		pnmvals = new BigInteger[max+1][max+1]; //initialize lookup table
 		for (int i = 0; i <= max; i++) {
 			System.out.println(i + ": " + p(i));
