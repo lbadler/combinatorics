@@ -298,20 +298,26 @@ public class CombinatoricsStuff {
 		return answer;
 	}
 	
-	public static int indexOf (int[] list, int target) {
-		int index = -1;
-		for (int i = 0; index == -1 && i < list.length; i++)
-			if (list[i] == target)
-				index = i;
-		return index;
-	}
-	
-	
+	//In RGF, the number of possibilities for remaining m numbers with existing largest number M
 	public static int d (int m, int t) {
 		if (m == 0) {
 			return 1;
 		} else {
 			return t * d(m-1, t) + d(m-1, t+1);
 		}
+	}
+	
+	//Nth catalan number
+	public static int catalan (int n) {
+		return choose (2*n, n) / (n+1);
+	}
+	
+	//Finds the index of a target int in an array
+	public static int indexOf (int[] list, int target) {
+		int index = -1;
+		for (int i = 0; index == -1 && i < list.length; i++)
+			if (list[i] == target)
+				index = i;
+		return index;
 	}
 }
