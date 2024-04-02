@@ -30,7 +30,11 @@ public class PartitionFunctionV2 {
 			System.out.println(i + ": " + p(i));
 		}
 		LocalTime endTime = LocalTime.now();
-		long runTime = startTime.until(endTime, ChronoUnit.SECONDS);
-		System.out.println("Total runtime: " + runTime + " seconds");
+		long runTime = startTime.until(endTime, ChronoUnit.MILLIS);
+		if (runTime > 1000)
+			if (runTime > 60000)
+				System.out.println("Total runtime: " + (runTime / 60000) + " minutes, " + ((runTime % 60000) / 1000) +  " seconds, " + (runTime % 1000) + "ms");
+			else System.out.println("Total runtime: " + (runTime/ 1000) +  " seconds, " + (runTime % 1000) + "ms");
+		else System.out.println("Total runtime: " + runTime + "ms");
 	}
 }
