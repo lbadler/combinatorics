@@ -3,6 +3,7 @@ import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 public class PartitionFunctionV2 {
 	public static BigInteger[][] pnmvals;
+	public static int functionCalls;
 	
 	public static BigInteger p(int n) {
 		return p(n, n);
@@ -10,6 +11,7 @@ public class PartitionFunctionV2 {
 	
 	//Number of partitions of n with largest partition at most max
 	public static BigInteger p(int n, int max) {
+		functionCalls++;
 		if (n == 0) //there is always 1 way to partition 0, regardless of max
 			return BigInteger.ONE;
 		if (max == 0) //if n != 0, we cannot divide it since all partitions are necessarily >0
@@ -23,6 +25,7 @@ public class PartitionFunctionV2 {
 	}
 	
 	public static void main(String[]args) {
+		functionCalls = 0;
 		LocalTime startTime = LocalTime.now();
 		int max = Integer.parseInt(args[0]);
 		pnmvals = new BigInteger[max+1][max+1]; //initialize lookup table
@@ -36,5 +39,6 @@ public class PartitionFunctionV2 {
 				System.out.println("Total runtime: " + (runTime / 60000) + " minutes, " + ((runTime % 60000) / 1000) +  " seconds, " + (runTime % 1000) + "ms");
 			else System.out.println("Total runtime: " + (runTime/ 1000) +  " seconds, " + (runTime % 1000) + "ms");
 		else System.out.println("Total runtime: " + runTime + "ms");
+		System.out.println(functionCalls + " function calls");
 	}
 }
